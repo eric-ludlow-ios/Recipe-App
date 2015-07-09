@@ -11,6 +11,8 @@
 
 @interface RARecipesTableViewDataSource : NSObject <UITableViewDataSource>
 
-- (void)registerTableView:(UITableView *)tableView;
+//Use this code if you are not initializing cells with style (which automatically links up new cells with ID's) so that the new cells can get registered with ID's:
+//
+//- (void)registerTableView:(UITableView *)tableView;
 
 @end

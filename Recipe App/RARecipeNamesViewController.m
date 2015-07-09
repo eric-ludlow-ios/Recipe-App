@@ -24,11 +24,24 @@
     
     self.recipeNamesTableView = [[UITableView alloc] initWithFrame:self.view.bounds
                                                              style:UITableViewStylePlain];
-    self.title = @"Pretty OK Recipes";
-    self.recipeNamesTableView.backgroundColor = [UIColor grayColor];
+
+    NSShadow *titleShadow = [[NSShadow alloc] init];
+    titleShadow.shadowColor = [UIColor blackColor];
+    titleShadow.shadowOffset = CGSizeMake(2, 0);
+
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                                    NSShadowAttributeName:titleShadow,
+                                                                    NSFontAttributeName: [UIFont fontWithName:@"Noteworthy" size:20]};
+    
+    self.title = @"Pretty OK, Old-Timey Recipes";
+    self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+    self.recipeNamesTableView.backgroundColor = [UIColor darkGrayColor];
     
     self.recipeDataSource = [RARecipesTableViewDataSource new];
-    [self.recipeDataSource registerTableView:self.recipeNamesTableView];
+    
+    //Use this code if you are not initializing cells with style (which automatically links up new cells with ID's) so that the new cells can get registered with ID's:
+    //
+//    [self.recipeDataSource registerTableView:self.recipeNamesTableView];
     self.recipeNamesTableView.dataSource = self.recipeDataSource;
     
     [self.view addSubview:self.recipeNamesTableView];
