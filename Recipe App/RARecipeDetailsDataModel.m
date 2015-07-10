@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 DevMountain. All rights reserved.
 //
 
-#import "RARecipeDetails.h"
+#import "RARecipeDetailsDataModel.h"
 
 static NSString * const RecipeTitleKey = @"recipeTitle";
 static NSString * const RecipeDescriptionKey = @"recipeDescription";
@@ -15,7 +15,7 @@ static NSString * const IngredientVolumeKey = @"ingredientVolume";
 static NSString * const IngredientTypeKey = @"ingredientType";
 static NSString * const DirectionsKey = @"directions";
 
-@implementation RARecipeDetails
+@implementation RARecipeDetailsDataModel
 
 + (NSInteger)count {
     return [[self recipes] count];

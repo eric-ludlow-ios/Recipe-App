@@ -7,7 +7,7 @@
 //
 
 #import "RARecipesTableViewDataSource.h"
-#import "RARecipeDetails.h"
+#import "RARecipeDetailsDataModel.h"
 
 static NSString *cellID = @"cellID";
 
@@ -30,7 +30,7 @@ static NSString *cellID = @"cellID";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    int i = (int)[RARecipeDetails count];
+    int i = (int)[RARecipeDetailsDataModel count];
     return i;
 
 }
@@ -44,8 +44,8 @@ static NSString *cellID = @"cellID";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle  reuseIdentifier:cellID];
     }
     
-    cell.textLabel.text = [RARecipeDetails titleAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [RARecipeDetails descriptionAtIndex:indexPath.row];
+    cell.textLabel.text = [RARecipeDetailsDataModel titleAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [RARecipeDetailsDataModel descriptionAtIndex:indexPath.row];
 //    cell.detailTextLabel.numberOfLines = 0;
     cell.backgroundColor = [UIColor lightGrayColor];
     

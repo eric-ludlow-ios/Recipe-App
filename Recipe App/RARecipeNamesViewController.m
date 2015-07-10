@@ -7,9 +7,10 @@
 //
 
 #import "RARecipeNamesViewController.h"
+#import "RARecipeDetailsViewController.h"
 #import "RARecipesTableViewDataSource.h"
 
-@interface RARecipeNamesViewController ()
+@interface RARecipeNamesViewController () <UITableViewDelegate>
 
 @property (strong, nonatomic)UITableView *recipeNamesTableView;
 @property (strong, nonatomic)RARecipesTableViewDataSource *recipeDataSource;
@@ -38,6 +39,7 @@
     self.recipeNamesTableView.backgroundColor = [UIColor darkGrayColor];
     
     self.recipeDataSource = [RARecipesTableViewDataSource new];
+    self.recipeNamesTableView.delegate = self;
     
     //Use this code if you are not initializing cells with style (which automatically links up new cells with ID's) so that the new cells can get registered with ID's:
     //
@@ -46,9 +48,26 @@
     
     [self.view addSubview:self.recipeNamesTableView];
     
-    
-    
 }
+    
+#pragma mark - Table View Delegate Protocol Methods
+    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self.recipeNamesTableView deselectRowAtIndexPath:indexPath
+                                             animated:YES];
+    
+    RARecipeDetailsViewController *recipeDetailsViewControllerInstance = [RARecipeDetailsViewController new];
+    
+    recipeDetailsViewControllerInstance.recipeIndex = indexPath.row;
+    
+    [self.navigationController pushViewController:recipeDetailsViewControllerInstance
+                                         animated:YES];
+    
+    
+    //In your didSelectRowAtIndexPath: method in your RecipeViewController, set the public index property of the DetailViewController to the indexPath.row of the selected cell
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
