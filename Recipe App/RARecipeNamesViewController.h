@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RARecipeNamesViewController : UIViewController
+@interface RARecipeNamesViewController : UIViewController <UITableViewDelegate>
 
 @end

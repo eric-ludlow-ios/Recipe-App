@@ -10,7 +10,7 @@
 #import "RARecipeDetailsViewController.h"
 #import "RARecipesTableViewDataSource.h"
 
-@interface RARecipeNamesViewController () <UITableViewDelegate>
+@interface RARecipeNamesViewController () 
 
 @property (strong, nonatomic)UITableView *recipeNamesTableView;
 @property (strong, nonatomic)RARecipesTableViewDataSource *recipeDataSource;
@@ -23,19 +23,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.recipeNamesTableView = [[UITableView alloc] initWithFrame:self.view.bounds
-                                                             style:UITableViewStylePlain];
-
     NSShadow *titleShadow = [[NSShadow alloc] init];
     titleShadow.shadowColor = [UIColor blackColor];
     titleShadow.shadowOffset = CGSizeMake(2, 0);
-
+    
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor],
                                                                     NSShadowAttributeName:titleShadow,
                                                                     NSFontAttributeName: [UIFont fontWithName:@"Noteworthy" size:20]};
     
     self.title = @"Pretty OK, Old-Timey Recipes";
     self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+    
+    
+    self.recipeNamesTableView = [[UITableView alloc] initWithFrame:self.view.bounds
+                                                             style:UITableViewStylePlain];
+
     self.recipeNamesTableView.backgroundColor = [UIColor darkGrayColor];
     
     self.recipeDataSource = [RARecipesTableViewDataSource new];
